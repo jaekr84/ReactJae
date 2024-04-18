@@ -2,12 +2,13 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import CartWidget from './CartWidget'
+import { Link } from 'react-router-dom'
 
 const navigation = [
     { name: 'Home ', href: '#', current: true },
-    { name: 'About', href: '#', current: false },
-    { name: 'Products', href: '#', current: false },
-    { name: 'Contact', href: '#', current: false },
+    { name: 'About', href: '/about', current: false },
+    { name: 'Characters', href: '/characters', current: false },
+    { name: 'Contact', href: '/contact', current: false },
 ]
 
 function classNames(...classes) {
@@ -126,7 +127,7 @@ export default function NavBar() {
                     <Disclosure.Panel className="sm:hidden">
                         <div className="space-y-1 px-2 pb-3 pt-2">
                             {navigation.map((item) => (
-                                <Disclosure.Button
+                                <Link
                                     key={item.name}
                                     as="a"
                                     href={item.href}
@@ -137,7 +138,7 @@ export default function NavBar() {
                                     aria-current={item.current ? 'page' : undefined}
                                 >
                                     {item.name}
-                                </Disclosure.Button>
+                                </Link>
                             ))}
                         </div>
                     </Disclosure.Panel>
